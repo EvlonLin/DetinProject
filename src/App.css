@@ -1,0 +1,88 @@
+body {
+  font-family: Helvetica,Arial,sans-serif;
+}
+
+.tick {
+  max-width: 60px;
+}
+p {
+  text-align: left;
+  padding-left: 28px;
+  font-size: 18pt;
+  font-family: Helvetica,Arial,sans-serif;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 20px;
+  margin: 0;
+}
+
+li {
+  padding: 10px;
+}
+
+li:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 10px;
+  padding-right: 18px;
+  margin-right: 10px;
+  
+}
+
+li:nth-child(1):before {
+  background-color: #F7464A;
+}
+
+li:nth-child(2):before {
+  background-color: #46BFBD;
+}
+
+li:nth-child(3):before {
+  background-color: #FDB45C;
+}
+
+li:nth-child(4):before {
+  background-color: #7a7a7a;
+}
+
+li:nth-child(5):before {
+  background-color: #424242;
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  background-color: #fbfbfb;
+}
+
+.Charts {
+  margin-top: 100px; 
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* grid-gap: 100px; */
+}
+
+.PieChart {
+  position: relative;
+  /* padding-top: 100px; */
+  /* margin: auto; */
+  margin-left: auto;
+  padding-right: 10%;
+  width: 300px;
+}
+
+.ChartInfo {
+  border-radius: 6px;
+  /* padding: 20px; */
+  /* border: 1px solid; */
+  width: 300px;
+  height: 300px;
+  margin-left: 10%;
+  box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+  background-color: #fff;
+}
