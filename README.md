@@ -1,4 +1,8 @@
 <a name="usage"></a>
+
+## Note
+This project is built for the interview coding challenge. The links on the Drawers does not work yet.
+
 ## how to get started
 1. download the .zip file or clone the reposotory
 2. use terminal and -cd into the folder
