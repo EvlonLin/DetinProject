@@ -142,36 +142,67 @@ var DoughnutChart = require("react-chartjs").Doughnut;
     }
     
     WordLimit(string) {
-      string.split(' ')
+      if (string.split(' ').length > 2) {
+        return string.split(' ').slice(0,2).join(' ') + '...';
+      }
+      else {
         return string.split(' ').slice(0,2).join(' ');
+      }
+    }
+
+    RemoveBracket(string) {
+      return string.split('(').slice(0,1);
     }
 
 
     bchart() {
       const {barData } = this.state;
       if (this.state.loaded){
-      console.log(barData[0][0],barData[1][0])
+      console.log(barData.length)
       return(
       <div>
           <BarChart
-            // axisLabels={{x: 'My x Axis', y: 'My y Axis'}}
+            axisLabels={{x: 'Contry', y: 'Frequency'}}
             axes
             height={300}
-            width={600}
-            margin={{top: 50, right: 100, bottom: 50, left: 100}}
+            width={450}
+            // margin={{top: 50, right: 100, bottom: 50, left: 100}}
             colorBars
             barWidth={1}
             data={[
-              { x: this.WordLimit(barData[0][0]), y: barData[0][1]},
-              { x: this.WordLimit(barData[1][0]), y: barData[1][1]},
-              { x: this.WordLimit(barData[2][0]), y: barData[2][1]},
-              { x: this.WordLimit(barData[3][0]), y: barData[3][1]},
-              { x: this.WordLimit(barData[4][0]), y: barData[4][1]},
+              { x: this.WordLimit(barData[0][0]), y: barData[0][1], color: '#F7464A'},
+              { x: this.WordLimit(barData[1][0]), y: barData[1][1], color: '#46BFBD'},
+              { x: this.WordLimit(barData[2][0]), y: barData[2][1], color: '#FDB45C'},
+              { x: this.WordLimit(barData[3][0]), y: barData[3][1], color: '#7a7a7a'},
+              { x: this.WordLimit(barData[4][0]), y: barData[4][1], color: '#424242'},
             ]}
           />
           </div>
       )
+      }
     }
+
+    showPercentage(num) {
+      const {barData} = this.state;
+      return parseFloat(num/barData.length*100).toFixed(2)+"%"
+    }
+
+    bchartInfo() {
+      const {barData} = this.state;
+      if (this.state.loaded){
+      return(
+          <div>
+              <p>Applicant's Citizenship </p>
+              <ul className="List">
+                  <li className="ListItem">{this.RemoveBracket(barData[0][0])}: {this.showPercentage(barData[0][1])}</li>
+                  <li className="ListItem">{this.RemoveBracket(barData[1][0])}: {this.showPercentage(barData[1][1])}</li>
+                  <li className="ListItem">{this.RemoveBracket(barData[2][0])}: {this.showPercentage(barData[2][1])}</li>
+                  <li className="ListItem">{this.RemoveBracket(barData[3][0])}: {this.showPercentage(barData[3][1])}</li>
+                  <li className="ListItem">{this.RemoveBracket(barData[4][0])}: {this.showPercentage(barData[4][1])}</li>
+              </ul>
+          </div>
+      )
+      }
     }
 
         render() {
@@ -194,9 +225,14 @@ var DoughnutChart = require("react-chartjs").Doughnut;
                           <li className="ListItem">Visitor Visa Entry: {VisitorVisa}</li>
                         </ul>
                     </div> 
-                  { this.bchart()}
-                    
-                    
+
+                    <div className="BarCharts">
+                        { this.bchart() }  
+                    </div>
+                    <div className="BarChartInfo">
+                        { this.bchartInfo() }
+                    </div> 
+
                 </section>
             );
         }

@@ -13,8 +13,8 @@ import Drawer from '@material-ui/core/Drawer';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/Inbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import StarIcon from '@material-ui/icons/Star';
 
 
 const styles = theme => ({
@@ -39,7 +39,16 @@ const styles = theme => ({
         
     },
     font: {
-        color: 'white'
+        color: 'white',
+        fontSize: '18pt'
+    },
+    fontSection: {
+        // marginLeft: 'auto',
+        paddingLeft: '28px',
+        paddingTop: '30px',
+        fontSize: '18pt',
+        width: '130px',
+        color: '#3c3c3c'
     }
 });
 
@@ -68,24 +77,24 @@ class MainPage extends Component {
                     <List component="nav">
                         <ListItem button>
                             <ListItemIcon>
-                                <InboxIcon />
+                                <AccountCircle />
                             </ListItemIcon>
-                            <ListItemText primary="Inbox" />
+                            <ListItemText primary="Profile" />
                         </ListItem>
                         <ListItem button>
                             <ListItemIcon>
-                                <DraftsIcon />
+                                <StarIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Drafts" />
+                            <ListItemText primary="Performance" />
                         </ListItem>
                     </List>
                     <Divider />
                     <List component="nav">
                         <ListItem button>
-                            <ListItemText primary="Trash" />
+                            <ListItemText primary="BarChart" />
                         </ListItem>
-                        <ListItem button component="a" href="#simple-list">
-                            <ListItemText primary="Spam" />
+                        <ListItem button>
+                            <ListItemText primary="PieChart" />
                         </ListItem>
                     </List>
             </div>
@@ -107,11 +116,14 @@ class MainPage extends Component {
                             {sideList}
                         </div>
                     </Drawer>
-                    <Typography variant="title" className={classes.font}>
+                    <Typography variant="title" className={classes.font} >
                     Destin AI
                     </Typography>
                 </Toolbar>
             </AppBar>
+            <Typography variant="title" className={classes.fontSection}>
+                    Performance:
+            </Typography>
             <Chart/>
         </div>
         );
